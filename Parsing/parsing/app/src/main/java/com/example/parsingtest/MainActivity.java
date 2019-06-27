@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
                 conn.disconnect();
             }else{
                 System.out.println("실패");
-                return "Fail";
+                return "Faiu6u6yu5l";
             }
         }catch (Exception e){
             e.printStackTrace();
-            return "Fail";
+            return "Faasdfasdfil";
         }
         return output;
     }
@@ -93,38 +93,43 @@ public class MainActivity extends AppCompatActivity {
         }
         String UserId, BoardId, Icon, Member, Main_text, Location;
         int Price;
-         String Uploade_Date, Start_Time, End_Time;
+        String Uploade_Date, Start_Time, End_Time, jsonarr;
+        String Dqy_String;
 
         //반환 값은 여기로
         protected void onPostExecute(String str){
 
             tv.setText(str);
 
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(str);
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(str);
+                jsonarr = jsonObject.getString("SelectAll");
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+            JSONObject jarr =null;
+            try {
+                jarr = new JSONObject(jsonarr);
+                UserId = jarr.getString("userid");
+                BoardId= jarr.getString("boardid");
+                Icon = jarr.getString("icon");
+                Member = jarr.getString("member");
+                Main_text = jarr.getString("maintext");
+                Location = jarr.getString("location");
+                Price = jarr.getInt("price");
+                Uploade_Date = jarr.getString("uploadtime");
+                Start_Time = jarr.getString("starttime");
+                End_Time = jarr.getString("endtime");
+                Dqy_String = jarr.getString("daystring");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                UserId = jsonObject.getString("userid");
-                BoardId= jsonObject.getString("boardid");
-                Icon = jsonObject.getString("icon");
-                Member = jsonObject.getString("member");
-                Main_text = jsonObject.getString("maintext");
-                Location = jsonObject.getString("location");
-                Price = jsonObject.getInt("price");
-                Uploade_Date = jsonObject.getString("uploadtime");
-                Start_Time = jsonObject.getString("starttime");
-                End_Time = jsonObject.getString("endtime");
-
-                } catch (JSONException e1) {
-                    e1.printStackTrace();
-                }
-
-                    String tvstring = tv.getText().toString();
-                    tv.setText(tvstring + "\n유저아이디 : " + UserId + "\n보드아이디 : " + BoardId + "\n아이콘 : " + Icon +
-                               "\n주내용 : " + Main_text + "\n장소 : " + Location + "\n가격 : " + Price + "\n게시날짜 : " + Uploade_Date +
-                                "\n일 시작일 : " + Start_Time + "\n일 종료일 : " + End_Time);
-
-
+            String tvstring = tv.getText().toString();
+            tv.setText(tvstring + "\n유저아이디 : " + UserId + "\n보드아이디 : " + BoardId + "\n아이콘 : " + Icon +
+                    "\n주내용 : " + Main_text + "\n장소 : " + Location + "\n가격 : " + Price + "\n게시날짜 : " + Uploade_Date +
+                    "\n일 시작일 : " + Start_Time + "\n일 종료일 : " + End_Time + "\n데이스트링" + Dqy_String);
         }
 
     }
