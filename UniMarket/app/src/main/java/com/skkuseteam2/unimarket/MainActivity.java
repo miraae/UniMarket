@@ -1,5 +1,6 @@
 package com.skkuseteam2.unimarket;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,19 +42,32 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                MarketItemView view = new MarketItemView(getApplicationContext());
+                MarketItemView view = null;
+                if(convertView == null){
+                    view =  new MarketItemView(getApplicationContext());
+                }
+                else{
+                    view = (MarketItemView) convertView;
+                }
+
                 MarketItem item = items.get(position);
-                view.setIcon(R.drawable.test);
-                view.setTextView1(item.getStr());
-                view.setImg(R.drawable.test,R.drawable.test,R.drawable.test,R.drawable.test);
+                view.setIcon(item.getIcon());
+                view.setIcon2(item.getIcon2());
+                view.setAdress(item.getAddress());
+                view.setImg(item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4());
                 view.setMoney(item.getMoney());
                 return view;
             }
         }
 
         ListView listView = (ListView)findViewById(R.id.listView);
+        listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
-        adapter.addItem(new MarketItem(null,"구인",null,null,null,null,"10000원"));
+        adapter.addItem(new MarketItem(R.drawable.back,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.back,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.back,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.back,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.back,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         listView.setAdapter(adapter);
     }
 }
