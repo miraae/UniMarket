@@ -4,26 +4,110 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 public class WriteActivity extends AppCompatActivity {
     ImageButton backButton;
     ImageButton move,pack,car,animal,etc;
-
+    ImageButton plus,minus;
+    ImageView img1,img2,img3,img4;
+    int size=4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
+
         backButton = (ImageButton)findViewById(R.id.backButton);
         move = (ImageButton)findViewById(R.id.move);
         pack = (ImageButton)findViewById(R.id.pack);
         car = (ImageButton)findViewById(R.id.car);
         animal = (ImageButton)findViewById(R.id.animal);
         etc = (ImageButton)findViewById(R.id.etc);
+        plus = (ImageButton)findViewById(R.id.plus);
+        minus = (ImageButton)findViewById(R.id.minus);
+
+        img1 = (ImageView)findViewById(R.id.img1);
+        img2 = (ImageView)findViewById(R.id.img2);
+        img3 = (ImageView)findViewById(R.id.img3);
+        img4 = (ImageView)findViewById(R.id.img4);
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(size>=4)
+                    return;
+                else{
+                    size++;
+                    if(size==1) {
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.INVISIBLE);
+                        img3.setVisibility(View.INVISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                    else if(size == 2){
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.VISIBLE);
+                        img3.setVisibility(View.INVISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                    else if(size == 3){
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.VISIBLE);
+                        img3.setVisibility(View.VISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                    else if(size == 4){
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.VISIBLE);
+                        img3.setVisibility(View.VISIBLE);
+                        img4.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
+
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(size<=0)
+                    return;
+                else {
+                    size--;
+                    if(size==1) {
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.INVISIBLE);
+                        img3.setVisibility(View.INVISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                    else if(size == 2){
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.VISIBLE);
+                        img3.setVisibility(View.INVISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                    else if(size == 3){
+                        img1.setVisibility(View.VISIBLE);
+                        img2.setVisibility(View.VISIBLE);
+                        img3.setVisibility(View.VISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                    else if(size == 0){
+                        img1.setVisibility(View.INVISIBLE);
+                        img2.setVisibility(View.INVISIBLE);
+                        img3.setVisibility(View.INVISIBLE);
+                        img4.setVisibility(View.INVISIBLE);
+                    }
+                }
             }
         });
     }
