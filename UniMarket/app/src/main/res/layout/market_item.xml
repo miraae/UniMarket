@@ -50,18 +50,19 @@
                     android:layout_marginLeft="9.3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
                     android:textSize="10sp"
                     android:textColor="#c6c6c6"
                     android:lineSpacingExtra="1.3sp"
                     android:text="대구광역시 달서구 진천동"/>
 
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="32.1dp"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -70,35 +71,34 @@
                     android:layout_height="32.1dp"
                     android:background="@android:color/transparent"
                     android:scaleType="fitXY"
-                    android:layout_marginLeft="72.5dp"
-                    android:src="@drawable/hum_icon"  />
+                    android:src="@drawable/hum_icon" />
 
                 <ImageView
                     android:id="@+id/img2"
                     android:layout_width="20.4dp"
                     android:layout_height="32.1dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="9dp"
                     android:background="@android:color/transparent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/hum_icon"  />
+                    android:src="@drawable/hum_icon" />
 
                 <ImageView
                     android:id="@+id/img3"
                     android:layout_width="20.4dp"
                     android:layout_height="32.1dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="9dp"
                     android:background="@android:color/transparent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/hum_icon"  />
+                    android:src="@drawable/hum_icon" />
 
                 <ImageView
                     android:id="@+id/img4"
                     android:layout_width="20.4dp"
                     android:layout_height="32.1dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="9dp"
                     android:background="@android:color/transparent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/hum_icon"  />
+                    android:src="@drawable/hum_icon" />
             </LinearLayout>
             <LinearLayout
                 android:layout_gravity="center_horizontal"
@@ -109,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nanumsquareroundb"
                     android:textSize="15sp"
                     android:textColor="#707070"
                     android:text="시급"/>
@@ -117,6 +118,7 @@
                     android:layout_marginLeft="9dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
                     android:text="10000"
                     android:textSize="36sp"/>
                 <TextView
@@ -124,6 +126,7 @@
                     android:layout_marginLeft="5.3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
                     android:textSize="15sp"
                     android:textColor="#707070"
                     android:layout_gravity="center_vertical"/>

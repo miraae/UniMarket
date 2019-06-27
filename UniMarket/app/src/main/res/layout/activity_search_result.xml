@@ -49,10 +49,20 @@
             android:scaleType="fitXY"
             android:src="@drawable/find" />
     </RelativeLayout>
-
-    <ListView
-        android:id="@+id/listView"
+    <LinearLayout
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/listView"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:focusableInTouchMode="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#ffffff"
+            android:dividerHeight="10dp"></ListView>
+    </LinearLayout>
 </LinearLayout>

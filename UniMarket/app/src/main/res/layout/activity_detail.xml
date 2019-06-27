@@ -36,8 +36,8 @@
     </RelativeLayout>
 
     <ScrollView
-        android:fillViewport="true"
         android:orientation="vertical"
+        android:fillViewport="true"
         android:overScrollMode="never"
         android:scrollbars="none"
         android:focusableInTouchMode="false"
