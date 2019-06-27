@@ -14,20 +14,15 @@ public class ChatModel {
 
     public ChatModel() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
-
     }
 
 
     public ChatModel(int boardid,String name ,String text, int picture , int otherid) {
-
-        //시간은 이부분에서 처리.
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String strDate = sdf.format(c.getTime());
-
         this.name = name;
         this.boardid = boardid;
-        this.timelog = strDate;
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.timelog =   sdf.format(c.getTime());
         this.text = text;
         this.picture = picture;
         this.otherid = otherid;
