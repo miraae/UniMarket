@@ -29,6 +29,7 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
             }
         });
 
@@ -89,7 +90,7 @@ public class SearchResultActivity extends AppCompatActivity {
             ganpan.setImageResource(R.drawable.tagbutton_move);
             for(int i=0;i<size;i++){
                 MarketItem item = MainActivity.items.get(i);
-                if(item.getIcon()==R.drawable.move){
+                if(item.getIcon()==R.drawable.move || item.getIcon()==R.drawable.move_y){
                     adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
                 }
             }
@@ -98,7 +99,7 @@ public class SearchResultActivity extends AppCompatActivity {
             ganpan.setImageResource(R.drawable.tagbutton_car);
             for(int i=0;i<size;i++){
                 MarketItem item = MainActivity.items.get(i);
-                if(item.getIcon()==R.drawable.pack){
+                if(item.getIcon()==R.drawable.car || item.getIcon() == R.drawable.car_y){
                     adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
                 }
             }
@@ -107,7 +108,7 @@ public class SearchResultActivity extends AppCompatActivity {
             ganpan.setImageResource(R.drawable.tagbutton_pet);
             for(int i=0;i<size;i++){
                 MarketItem item = MainActivity.items.get(i);
-                if(item.getIcon()==R.drawable.pet_y){
+                if(item.getIcon()==R.drawable.pet_y || item.getIcon()==R.drawable.pet){
                     adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
                 }
             }
@@ -116,7 +117,7 @@ public class SearchResultActivity extends AppCompatActivity {
             ganpan.setImageResource(R.drawable.tagbutton_pack);
             for(int i=0;i<size;i++){
                 MarketItem item = MainActivity.items.get(i);
-                if(item.getIcon()==R.drawable.etc){
+                if(item.getIcon()==R.drawable.pack || item.getIcon()==R.drawable.pack_y){
                    adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
                 }
             }
@@ -125,7 +126,7 @@ public class SearchResultActivity extends AppCompatActivity {
             ganpan.setImageResource(R.drawable.tagbutton_etc);
             for(int i=0;i<size;i++){
                 MarketItem item = MainActivity.items.get(i);
-                if(item.getIcon()==R.drawable.move){
+                if(item.getIcon()==R.drawable.etc || item.getIcon()==R.drawable.etc_y){
                     adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
                 }
             }

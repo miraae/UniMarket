@@ -269,7 +269,6 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:text="2019.06.26" />
-
                 <ImageButton
                     android:id="@+id/endDateButton"
                     android:layout_toLeftOf="@+id/endDateText"
