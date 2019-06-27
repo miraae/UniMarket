@@ -13,7 +13,7 @@ public class BoardControll {
         public int price;   //금액---------
         public int member;  //맴버 수------
         public int boardsort; //구인 구직-----
-        public String icon;  //카테고리 ------
+        public int icon;  //카테고리 ------
 
         public String maintext; //메인택스트
 
@@ -24,7 +24,10 @@ public class BoardControll {
 
         public String daystring; // 데이 스트링
 
-        public BoardControll(int _userid, int _boardid,int _price,int _member,int _boardsort,String _icon,String _maintext,String _location,TimeModel _endtime,TimeModel _starttime,String _daystring){
+        public BoardControll(){
+
+        }
+        public BoardControll(int _userid, int _boardid,int _price,int _member,int _boardsort,int _icon,String _maintext,String _location,TimeModel _endtime,TimeModel _starttime,String _daystring){
                 userid =_userid;
                 boardid = _boardid;
                 price = _price;

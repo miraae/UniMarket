@@ -215,6 +215,7 @@
                     android:textSize="14sp"
                     android:textColor="#414141" />
                 <EditText
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -254,6 +255,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -316,14 +318,16 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp">
                 <TextView
+                    android:id="@+id/t1"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:fontFamily="@font/nanumsquareroundb"
-                    android:text="PM "
+                    android:text="PM"
                     android:textColor="#8d8d8d"
                     android:textSize="18sp"/>
 
                 <EditText
+                    android:id="@+id/starthour"
                     android:textAlignment="center"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -341,6 +345,7 @@
                     android:textColor="#8d8d8d"
                     android:textSize="18sp" />
                 <EditText
+                    android:id="@+id/startminute"
                     android:textAlignment="center"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -358,6 +363,7 @@
                     android:textColor="#8d8d8d"
                     android:textSize="18sp" />
                 <EditText
+                    android:id="@+id/endhour"
                     android:textAlignment="center"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -375,6 +381,7 @@
                     android:textColor="#8d8d8d"
                     android:textSize="18sp" />
                 <EditText
+                    android:id="@+id/endminute"
                     android:textAlignment="center"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -385,10 +392,11 @@
                     android:textColor="#8d8d8d"
                     android:textSize="18sp" />
                 <TextView
+                    android:id="@+id/t2"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:fontFamily="@font/nanumsquareroundb"
-                    android:text="PM "
+                    android:text="PM"
                     android:textColor="#8d8d8d"
                     android:textSize="18sp"/>
             </LinearLayout>

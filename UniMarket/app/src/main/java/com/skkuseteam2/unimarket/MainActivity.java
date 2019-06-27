@@ -39,15 +39,49 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton searchButton;
     static ArrayList<MarketItem> items = new ArrayList<MarketItem>();
+    Intent data=null;
 
     private DatabaseReference mDatabase;
 
     private ArrayList<BoardControll> boardlist = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        data=getIntent();
+
+        try {
+            if (data != null) {
+                String location = data.getStringExtra("locating");
+                int member = data.getIntExtra("member", 1);
+                int icon = data.getIntExtra("icon", 1);
+                int price = data.getIntExtra("price", 1);
+                String maintext = data.getStringExtra("maintext");
+                String[] start = data.getStringExtra("start").split("@");
+                String[] end = data.getStringExtra("end").split("@");
+                String start2 = MakeDateString(start[0], start[1], start[2], start[3]);
+                String end2 = MakeDateString(end[0], end[1], end[2], end[3]);
+                Date s1 = MakeDate(start2);
+                Date e1 = MakeDate(end2);
+
+                TimeModel t1 = new TimeModel(s1);
+                TimeModel t2 = new TimeModel(e1);
+
+
+                BoardControll item = new BoardControll(101, boardlist.size() - 1, price, member, 0, icon, maintext, location, t2, t1, null);
+                Php_SendMessage(item.getAddress());
+
+                System.out.println(location + " " + member + " " + icon + " " + maintext + " " + start + " " + end);
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
 
         ImageButton menuButton=(ImageButton)findViewById(R.id.menuButton);
         searchButton = (ImageButton)findViewById(R.id.searchButton);
@@ -111,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.listView);
         listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
-        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        /*adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.car,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.pack,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"4000"));
@@ -120,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addItem(new MarketItem(R.drawable.car_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.pack_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.etc_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.etc_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));*/
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -169,10 +203,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         Date date = MakeDate("2019-12-12 01:42:22");
         TimeModel timeModel = new TimeModel(date);
         BoardControll boardControll = new BoardControll(1,1,30000,4,2,
-                "이사","도와주세요","서구",timeModel ,timeModel,"월#목#금");
+                6,"도와주세요","서구",timeModel ,timeModel,"월#목#금");
 
         System.out.println(boardControll.getAddress());
         String temp = boardControll.getAddress();
@@ -439,49 +474,7 @@ public class MainActivity extends AppCompatActivity {
 
         //반환 값은 여기로
         protected void onPostExecute(String str){
-            String OutputData = "";
-            JSONObject jsonResponse;
-            Toast.makeText(getApplication(),str,Toast.LENGTH_LONG).show();
-
-            try {
-
-                /****** Creates a new JSONObject with name/value mappings from the JSON string. ********/
-                jsonResponse = new JSONObject(str);
-
-                /***** Returns the value mapped by name if it exists and is a JSONArray. ***/
-                /*******  Returns null otherwise.  *******/
-                JSONArray jsonMainNode = jsonResponse.optJSONArray("SelectAll");
-
-                /*********** Process each JSON Node ************/
-
-                int lengthJsonArr = jsonMainNode.length();
-
-                for(int i=0; i < lengthJsonArr; i++)
-                {
-                    /****** Get Object for each JSON node.***********/
-                    JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-
-                    Date StartTime = MakeDate(jsonChildNode.getString("starttime"));
-                    Date EndTime = MakeDate(jsonChildNode.getString("endtime"));
-
-
-                    TimeModel St = new TimeModel(StartTime);
-                    TimeModel Et = new TimeModel(EndTime);
-
-
-                    BoardControll boardControll = new BoardControll((jsonChildNode.getInt("userid")), (jsonChildNode.getInt("boardid")), (jsonChildNode.getInt("price")),
-                            (jsonChildNode.getInt("member")), (jsonChildNode.getInt("noardsort")), (jsonChildNode.getString("icon")), (jsonChildNode.getString("maintext")),
-                            (jsonChildNode.getString("location")), St, Et, (jsonChildNode.getString("daystring")));
-
-                    boardlist.add(boardControll);
-                }
-
-
-            } catch (JSONException e) {
-
-                e.printStackTrace();
-            }
-
+            Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
         }
 
     }
