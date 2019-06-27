@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

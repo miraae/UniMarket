@@ -30,10 +30,10 @@
             android:layout_height="20dp" />
 
         <ImageButton
+            android:id="@+id/searchButton"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/searchButton"
             android:scaleType="fitXY"
             android:layout_width="35dp"
             android:layout_height="35dp"
