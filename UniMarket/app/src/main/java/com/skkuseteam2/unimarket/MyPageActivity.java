@@ -11,11 +11,22 @@ public class MyPageActivity extends AppCompatActivity {
     ImageButton cancel;
     Button people;
     Button find;
+    Button findButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         cancel = (ImageButton)findViewById(R.id.cancel);
+        findButton = (Button)findViewById(R.id.findButton);
+        findButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new  Intent(MyPageActivity.this,WriteFindActivity.class);
+                startActivity(intent);
+            }
+        });
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
