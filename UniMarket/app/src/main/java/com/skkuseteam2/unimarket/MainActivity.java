@@ -1,8 +1,11 @@
-﻿package com.skkuseteam2.unimarket;
+package com.skkuseteam2.unimarket;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +13,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -24,17 +20,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,16 +35,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.net.ssl.HttpsURLConnection;
-
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     ImageButton searchButton;
     static ArrayList<MarketItem> items = new ArrayList<MarketItem>();
 
-private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
     private ArrayList<BoardControll> boardlist = new ArrayList<>();
 
@@ -164,7 +153,7 @@ private DatabaseReference mDatabase;
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                 //DB가 변경 되었을 때
+                //DB가 변경 되었을 때
             }
 
             @Override
@@ -189,13 +178,11 @@ private DatabaseReference mDatabase;
         String temp = boardControll.getAddress();
 
         //========-
-       // Php_SendMessage("http://"+temp);
+        // Php_SendMessage("http://"+temp);
         Php_SendMessage("http://10.10.4.186/Openhack_SelectAllData.php");
-       //==============
+        //==============
 
     }
-
-
 
     //채팅방 삭제(양방향 삭제) 보드 id값
     public void DeleteChatBoard(int boardid){
@@ -236,7 +223,7 @@ private DatabaseReference mDatabase;
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 //단톡방 자체를 나간경우.
                 ChatModel user = dataSnapshot.getValue(ChatModel.class);
-               // if(user.otherid == id) 나중에 자신의 아이디를 가지고 있을시 if 문을 토대로 자신의 글을 지울 수 있음.
+                // if(user.otherid == id) 나중에 자신의 아이디를 가지고 있을시 if 문을 토대로 자신의 글을 지울 수 있음.
                 dataSnapshot.getRef().setValue(null);
             }
             //region 오버라이딩 부분
@@ -311,33 +298,33 @@ private DatabaseReference mDatabase;
         }
     }
 
-    
+
 
 
     //day_commend = "2019-04-05" 를 주면 그것에 맞는 요일을 반환
     public  String getDateDay(String day_commend) {
         try{
 
-        String day = "";
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date nDate = dateFormat.parse(day_commend);
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(nDate);
+            String day = "";
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date nDate = dateFormat.parse(day_commend);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(nDate);
 
-        int dayNum = cal.get(Calendar.DAY_OF_WEEK);
-        switch (dayNum) {
-            case 1: day = "일"; break;
-            case 2: day = "월"; break;
-            case 3: day = "화"; break;
-            case 4: day = "수"; break;
-            case 5: day = "목"; break;
-            case 6: day = "금"; break;
-            case 7: day = "토"; break;
-        }
-        return day;
+            int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+            switch (dayNum) {
+                case 1: day = "일"; break;
+                case 2: day = "월"; break;
+                case 3: day = "화"; break;
+                case 4: day = "수"; break;
+                case 5: day = "목"; break;
+                case 6: day = "금"; break;
+                case 7: day = "토"; break;
+            }
+            return day;
         } catch (Exception e) {
-           e.printStackTrace();
-           return "";
+            e.printStackTrace();
+            return "";
         }
     }
 
@@ -376,7 +363,7 @@ private DatabaseReference mDatabase;
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date to;
         try {
-             to = transFormat.parse(time);
+            to = transFormat.parse(time);
             return to;
         } catch (ParseException e) {
             e.printStackTrace();
@@ -400,9 +387,6 @@ private DatabaseReference mDatabase;
 
     private class PhpTest extends AsyncTask<String,String,String> {
 
-
-
-
         @Override
         protected String doInBackground(String... params) {
             String output = "";
@@ -416,8 +400,8 @@ private DatabaseReference mDatabase;
                 conn.setDefaultUseCaches(false);
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-               // conn.setConnectTimeout(100000);
-              //  InputStreamReader in = new InputStreamReader((InputStream)conn.getContent(), "utf-8");
+                // conn.setConnectTimeout(100000);
+                //  InputStreamReader in = new InputStreamReader((InputStream)conn.getContent(), "utf-8");
 
                 //연결되었으면
                 if(conn != null){
@@ -500,10 +484,6 @@ private DatabaseReference mDatabase;
 
         }
 
-       }
+    }
 
 }
-
-
-
-
