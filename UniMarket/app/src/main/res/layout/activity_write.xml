@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="28dp"
+    android:orientation="vertical"
+    tools:context=".WriteActivity">
+
+    <RelativeLayout
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/backButton"
+            android:src="@drawable/btn_back"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_width="31.7dp"
+            android:layout_height="28.7dp" />
+        <TextView
+            android:fontFamily="@font/nanumsquareroundb"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19.3sp"
+            android:textColor="#4a4a4a"
+            android:text="글쓰기" />
+        <ImageButton
+            android:id="@+id/publishButton"
+            android:layout_width="32dp"
+            android:layout_height="21dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/pub_icon" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_marginTop="30dp"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:focusableInTouchMode="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/cat_move"
+                    />
+                <ImageButton
+                    android:src="@drawable/cat_pack"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp" />
+                <ImageButton
+                    android:src="@drawable/cat_car"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp" />
+                <ImageButton
+                    android:src="@drawable/cat_pet"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp" />
+                <ImageButton
+                    android:src="@drawable/cat_etc"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/nanumsquareroundb"
+                android:lineSpacingExtra="2sp"
+                android:text="필요한 인원은 몇 명인가요?"
+                android:textColor="#414141"
+                android:textSize="13.3sp" />
+            <LinearLayout
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/minus" />
+                <ImageView
+                    android:visibility="visible"
+                    android:src="@drawable/hum_icon"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="33dp"
+                    android:layout_height="51dp" />
+                <ImageView
+                    android:layout_width="33dp"
+                    android:layout_height="51dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/hum_icon"
+                    android:visibility="visible" />
+                <ImageView
+                    android:visibility="visible"
+                    android:src="@drawable/hum_icon"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="33dp"
+                    android:layout_height="51dp" />
+                <ImageView
+                    android:visibility="visible"
+                    android:src="@drawable/hum_icon"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:layout_width="33dp"
+                    android:layout_height="51dp" />
+                <ImageButton
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/plus" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="25dp"
+                android:background="#eeeeee" />
+            
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp"
+                android:paddingHorizontal="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/priceImage"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/pay_icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+                <TextView
+                    android:text="시급"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/priceImage"
+                    android:layout_marginLeft="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#414141" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="-2dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@+id/wonText"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:hint="8350"
+                    android:textColor="#707070"
+                    android:textSize="33sp" />
+                <TextView
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/wonText"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#707070"
+                    android:text="원" />
+            </RelativeLayout>
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundb"
+                android:textSize="10sp"
+                android:textColor="#adadad"
+                android:text="업무 강도에 따라 양심적인 페이를 책정해주세요." />
+            <LinearLayout
+                android:padding="33dp"
+                android:background="@drawable/deatiltext_background"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:hint="업무에 대한 상세내용, 우대조건 등을 자유롭게 써주세요."
+                    android:textColor="#707070"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:paddingHorizontal="30dp">
+
+                <ImageButton
+                    android:id="@+id/startDateButton"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/cal" />
+                <TextView
+                    android:id="@+id/startDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/startDateButton"
+                    android:lineSpacingExtra="2.7sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:text="2019.06.26" />
+
+                <ImageButton
+                    android:id="@+id/endDateButton"
+                    android:layout_toLeftOf="@+id/endDateText"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/cal" />
+                <TextView
+                    android:id="@+id/endDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:lineSpacingExtra="2.7sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:text="2019.06.26" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text="PM "
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:textAlignment="center"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:hint="03"
+                    android:inputType="number"
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text=":"
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <EditText
+                    android:textAlignment="center"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:hint="03"
+                    android:inputType="number"
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text=" - "
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <EditText
+                    android:textAlignment="center"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:hint="03"
+                    android:inputType="number"
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text=":"
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <EditText
+                    android:textAlignment="center"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:hint="03"
+                    android:inputType="number"
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text="PM "
+                    android:textColor="#8d8d8d"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="17dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/mark_icon"
+                    android:layout_width="13dp"
+                    android:layout_height="18dp" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:background="@android:color/transparent"
+                    android:hint="업무 장소를 입력해주세요!"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:textColor="#c6c6c6"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#eeeeee" />
+
+            <RelativeLayout
+                android:id="@+id/mapLayout"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="28dp"
+                android:background="#eeeeee"></RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
