@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 MarketItem item = items.get(position);
                 view.setIcon(item.getIcon());
                 view.setIcon2(item.getIcon2());
-                view.setAdress(item.getAddress());
+                view.setAddress(item.getAddress());
                 view.setImg(item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4());
                 view.setMoney(item.getMoney());
                 return view;
