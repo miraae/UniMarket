@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Chatting"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_weight="1">
+
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height = "10dp"
+            android:layout_weight="15"
+            android:transcriptMode="alwaysScroll"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp" />
+
+    </ScrollView>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation = "horizontal"
+        android:weightSum="8">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:hint="글자를 입력하시오" />
+
+        <ImageView
+            android:id="@+id/camera"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight = "1"
+            android:src="@drawable/camera2"/>
+
+        <ImageView
+            android:id="@+id/paint"
+            android:layout_width = "0dp"
+            android:layout_weight="1"
+            android:layout_height = "match_parent"
+            android:src="@drawable/draw">
+        </ImageView>
+
+        <ImageView
+            android:id ="@+id/ok"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight = "1"
+            android:src="@drawable/ok">
+        </ImageView>
+    </LinearLayout>
+
+
+</LinearLayout>
