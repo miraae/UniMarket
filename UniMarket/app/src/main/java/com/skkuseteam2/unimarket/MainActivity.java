@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Intent intent = new Intent(getApplicationContext(), ScrapListActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
 
         ImageButton menuButton=(ImageButton)findViewById(R.id.menuButton);
         searchButton = (ImageButton)findViewById(R.id.searchButton);
