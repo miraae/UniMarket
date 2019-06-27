@@ -1,31 +1,40 @@
 package com.skkuseteam2.unimarket;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ImageButton menuButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // 삭제할 코드 (Detail Activity 먼저 실행)
-        /*Intent intent = new Intent(getApplicationContext(), ChattingRoomActivity.class);
-        startActivity(intent);*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        menuButton = (ImageButton)findViewById(R.id.menuButton);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MyPageActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
+                finish();
+            }
+        });
 
         class MarketAdapter extends BaseAdapter{
-
             ArrayList<MarketItem> items = new ArrayList<MarketItem>();
-
             @Override
             public int getCount() {
                 return items.size();
