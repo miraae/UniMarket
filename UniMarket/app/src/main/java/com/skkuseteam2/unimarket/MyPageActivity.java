@@ -18,7 +18,7 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MyPageActivity.this,MainActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_left2,R.anim.anim_slide_in_right2);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
                 finish();
             }
         });

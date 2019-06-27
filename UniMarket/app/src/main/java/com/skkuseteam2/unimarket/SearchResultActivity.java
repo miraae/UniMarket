@@ -29,6 +29,7 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
             }
         });
 

@@ -24,6 +24,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
             }
         });
     }
@@ -34,26 +35,31 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchActivity.this,SearchResultActivity.class);
                 intent.putExtra("id","move");
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
                 break;
             case R.id.car:
                 Intent intent2 = new Intent(SearchActivity.this,SearchResultActivity.class);
                 intent2.putExtra("id","car");
                 startActivity(intent2);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
                 break;
             case R.id.animal:
                 Intent intent3 = new Intent(SearchActivity.this,SearchResultActivity.class);
                 intent3.putExtra("id","animal");
                 startActivity(intent3);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
                 break;
             case R.id.deliever:
                 Intent intent4 = new Intent(SearchActivity.this,SearchResultActivity.class);
                 intent4.putExtra("id","deliever");
                 startActivity(intent4);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
                 break;
             case R.id.gita:
                 Intent intent5 = new Intent(SearchActivity.this,SearchResultActivity.class);
                 intent5.putExtra("id","gita");
                 startActivity(intent5);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
         }
     }
 }
