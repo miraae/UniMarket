@@ -244,13 +244,16 @@
                     android:textSize="14sp"
                     android:text="대구광역시 달서구 대천동" />
             </LinearLayout>
-            <RelativeLayout
+            <ImageView
+                android:src="@drawable/map"
                 android:id="@+id/mapLayout"
-                android:layout_marginTop="18dp"
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_centerHorizontal="true">
-            </RelativeLayout>
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="28dp"
+                android:background="@android:color/transparent"/>
             <ImageButton
                 android:layout_width="69dp"
                 android:layout_height="71dp"
