@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -85,6 +86,15 @@ public class SearchResultActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.listView);
         listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
+            }
+        });
 
         if(data.equals("move")){
             ganpan.setImageResource(R.drawable.tagbutton_move);
