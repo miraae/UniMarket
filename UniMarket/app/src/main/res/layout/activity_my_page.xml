@@ -87,6 +87,7 @@
             android:text="- 사람 구해요."
             />
         <Button
+            android:id="@+id/findButton"
             android:background="@android:color/transparent"
             android:fontFamily="@font/nanumsquareroundb"
             android:layout_width="wrap_content"

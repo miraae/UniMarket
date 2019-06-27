@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 public class MyPageActivity extends AppCompatActivity {
     ImageButton cancel;
     Button people;
+    Button find;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +25,21 @@ public class MyPageActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         people = (Button)findViewById(R.id.people);
         people.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyPageActivity.this,WriteActivity.class);
+                Intent intent = new Intent(getApplicationContext(),WriteActivity.class);
                 startActivity(intent);
+            }
+        });
+        find = (Button)findViewById(R.id.findButton);
+        find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),WriteFindActivity.class);
+                startActivity(intent);
+
             }
         });
     }
