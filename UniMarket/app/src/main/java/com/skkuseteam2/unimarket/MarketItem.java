@@ -1,11 +1,16 @@
 package com.skkuseteam2.unimarket;
 
-public class MarketItem {
+import java.io.Serializable;
+
+public class MarketItem implements Serializable {
     int icon;
     int icon2;
     String address;
     int img1,img2,img3,img4;
     String money;
+    public MarketItem(){
+
+    }
 
     public MarketItem(int icon,int icon2, String address , int img1, int img2, int img3, int img4, String money){
         this.icon = icon;

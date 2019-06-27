@@ -1,5 +1,6 @@
 package com.skkuseteam2.unimarket;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ public class WriteActivity extends AppCompatActivity {
     ImageButton backButton;
     ImageButton move,pack,car,animal,etc;
     ImageButton plus,minus;
+    ImageButton publishButton;
     ImageView img1,img2,img3,img4;
     int size=4;
     @Override
@@ -33,6 +35,16 @@ public class WriteActivity extends AppCompatActivity {
         img3 = (ImageView)findViewById(R.id.img3);
         img4 = (ImageView)findViewById(R.id.img4);
 
+        publishButton = (ImageButton)findViewById(R.id.publishButton);
+
+        /*publishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MarketItem item = new MarketItem();
+                Intent intent = new Intent(WriteActivity.this,MainActivity.class);
+            }
+        });*/
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
