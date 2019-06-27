@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // 삭제할 코드 (Detail Activity 먼저 실행)
-        Intent intent = new Intent(getApplicationContext(), WriteFindActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChattingRoomActivity.class);
         startActivity(intent);
 
         super.onCreate(savedInstanceState);
