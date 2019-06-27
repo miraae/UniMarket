@@ -11,6 +11,7 @@ public class MyPageActivity extends AppCompatActivity {
     ImageButton cancel;
     Button people;
     Button find;
+    Button scrapList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,14 @@ public class MyPageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),WriteFindActivity.class);
                 startActivity(intent);
 
+            }
+        });
+        scrapList = (Button)findViewById(R.id.scrapListButton);
+        scrapList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ScrapListActivity.class);
+                startActivity(intent);
             }
         });
     }

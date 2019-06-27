@@ -1,11 +1,14 @@
 package com.skkuseteam2.unimarket;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 public class DetailActivity extends AppCompatActivity {
+
+    private int itemId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,17 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
+            }
+        });
+
+        ImageButton chatBtn = (ImageButton)findViewById(R.id.chatButton);
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ChattingRoomActivity.class);
+                intent.putExtra("boardid", itemId);
+                startActivity(intent);
             }
         });
     }

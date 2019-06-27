@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton searchButton;
     static ArrayList<MarketItem> items = new ArrayList<MarketItem>();
-
-    private DatabaseReference mDatabase;
-
     private ArrayList<BoardControll> boardlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*Intent intent = new Intent(getApplicationContext(), ScrapListActivity.class);
+        startActivity(intent);*/
 
         ImageButton menuButton=(ImageButton)findViewById(R.id.menuButton);
         searchButton = (ImageButton)findViewById(R.id.searchButton);
@@ -112,14 +104,14 @@ public class MainActivity extends AppCompatActivity {
         listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
         adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.pack_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.car,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.car_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.pack,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.etc,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.move_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.car_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.pack_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.etc_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         listView.setAdapter(adapter);
 
@@ -138,37 +130,8 @@ public class MainActivity extends AppCompatActivity {
         //
 
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("message");
-        mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //DB가 변경되면 계속해서 호출되는 부분.
 
-
-                ChatModel user = dataSnapshot.getValue(ChatModel.class);
-                // userlist.add(user);
-                // CustomAdapter adapter = (CustomAdapter) listView.getAdapter();
-                //adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                //DB가 변경 되었을 때
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
+/*
         Date date = MakeDate("2019-12-12 01:42:22");
         TimeModel timeModel = new TimeModel(date);
         BoardControll boardControll = new BoardControll(1,1,30000,4,2,
@@ -181,104 +144,10 @@ public class MainActivity extends AppCompatActivity {
         // Php_SendMessage("http://"+temp);
         Php_SendMessage("http://10.10.4.186/Openhack_SelectAllData.php");
         //==============
-
+*/
     }
 
-    //채팅방 삭제(양방향 삭제) 보드 id값
-    public void DeleteChatBoard(int boardid){
 
-
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("message");
-        db.orderByChild("boardid").equalTo(boardid).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                //단톡방 자체를 나간경우.
-                dataSnapshot.getRef().setValue(null);
-            }
-            //region 오버라이딩 부분
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-            //endregion
-        });
-    }
-
-    //채팅 내용 삭제(양방향 삭제) List에 들어간 ChatModel의 timelog 값
-    public void DeleteChatMessage(String time){
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("message");
-        db.orderByChild("timelog").equalTo(time).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                //단톡방 자체를 나간경우.
-                ChatModel user = dataSnapshot.getValue(ChatModel.class);
-                // if(user.otherid == id) 나중에 자신의 아이디를 가지고 있을시 if 문을 토대로 자신의 글을 지울 수 있음.
-                dataSnapshot.getRef().setValue(null);
-            }
-            //region 오버라이딩 부분
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-            //endregion
-        });
-    }
-
-    //방에서 쫓아내기 자기 자신 아이디를 주면 방 나가기
-    public void DeleteMember(int otherid){
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("message");
-        db.orderByChild("otherid").equalTo(otherid).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                dataSnapshot.getRef().setValue(null);
-            }
-            //region 오버라이딩 부분
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-            //endregion
-        });
-    }
-
-    //메세지 샌딩 부분 ChatModel 생성자 부분 참고
-    public void SendMessage(ChatModel packet){
-        ChatModel user = new ChatModel(1,"김길동", "메세지 갔습당", 01, 1);
-        mDatabase.push().setValue(user);
-    }
 
 
     //받아온 날짜 문자 파싱

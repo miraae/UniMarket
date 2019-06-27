@@ -330,6 +330,7 @@
                 android:background="@android:color/transparent"/>
 
             <ImageButton
+                android:id="@+id/chatButton"
                 android:layout_width="69dp"
                 android:layout_height="71dp"
                 android:layout_gravity="center_horizontal"

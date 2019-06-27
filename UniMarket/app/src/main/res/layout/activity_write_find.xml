@@ -382,15 +382,16 @@
                 android:background="#eeeeee" />
 
             <ImageView
-                android:src="@drawable/map"
                 android:id="@+id/mapLayout"
-                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:layout_alignParentStart="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="28dp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:scaleType="fitXY"
+                android:src="@drawable/map" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
