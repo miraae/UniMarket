@@ -29,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,7 +52,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+       Date t =  MakeDate("2019-12-13 11:22:33");
+        BoardControll boardControll = new BoardControll(166,166,30000,4,2,
+                1,"도와주세요","서구",new TimeModel(t) ,new TimeModel(t),"월#목#금");
+      // Php_SendMessage(boardControll.getAddress());
+        Php_SendMessage("http://10.10.4.186/OpenHack_InsertEmployBoard.php/?boardid=-1&userid=101&boardsort=0&price=1&icon=0&maintext=hello&location=%EB%8C%80%EA%B5%AC%20%EC%88%98%EC%84%B1%EA%B5%AC&endtime=2019-07-01%209:07:00&member=4&starttime=2019-06-29%208:06:00&daystring=null");
         data=getIntent();
 
         try {
@@ -204,17 +209,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Date date = MakeDate("2019-12-12 01:42:22");
-        TimeModel timeModel = new TimeModel(date);
-        BoardControll boardControll = new BoardControll(1,1,30000,4,2,
-                6,"도와주세요","서구",timeModel ,timeModel,"월#목#금");
 
-        System.out.println(boardControll.getAddress());
-        String temp = boardControll.getAddress();
-
-        //========-
         // Php_SendMessage("http://"+temp);
-        Php_SendMessage("http://10.10.4.186/Openhack_SelectAllData.php");
+       // Php_SendMessage("http://10.10.4.186/Openhack_SelectAllData.php");
         //==============
 
     }
@@ -428,6 +425,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 //연결 url 설정
                 System.out.println(params[0]);
+
                 URL url = new URL(params[0]);
 
                 //커넥션 객체 생성
