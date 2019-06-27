@@ -48,7 +48,9 @@
 
         <ListView
             android:id="@+id/listView"
-            android:background="@android:color/transparent"
+            android:outlineAmbientShadowColor="#ffe262"
+            android:outlineSpotShadowColor="#ffe262"
+            android:background="#ffe262"
             android:layout_width="match_parent"
             android:layout_height = "10dp"
             android:scrollbars="none"
@@ -57,6 +59,7 @@
             android:dividerHeight="8dp" />
 
     </ScrollView>
+
     <RelativeLayout
         android:id="@+id/messageLayout"
         android:layout_alignParentBottom="true"

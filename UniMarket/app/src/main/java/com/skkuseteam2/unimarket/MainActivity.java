@@ -1,10 +1,7 @@
 package com.skkuseteam2.unimarket;
 
-<<<<<<< HEAD
-=======
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
->>>>>>> 6c734431afe0573e967788a3a6a03928c4462b9b
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
