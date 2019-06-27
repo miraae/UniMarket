@@ -233,7 +233,7 @@
             android:layout_height="match_parent">
             <ImageView
                 android:layout_gravity="center"
-                android:src="@drawable/cat_etc_y"
+                android:src="@drawable/tagbutton_etc"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp" />
         </LinearLayout>
