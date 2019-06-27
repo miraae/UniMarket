@@ -24,7 +24,6 @@ public class SearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-
         backButton = (ImageView)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,9 +36,6 @@ public class SearchResultActivity extends AppCompatActivity {
         ganpan = (ImageView)findViewById(R.id.ganpan);
         Intent intent = getIntent();
         data = intent.getStringExtra("id");
-
-
-
 
         class MarketAdapter extends BaseAdapter {
             ArrayList<MarketItem> lists = new ArrayList<MarketItem>();
