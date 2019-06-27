@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ImageButton menuButton=(ImageButton)findViewById(R.id.menuButton);
+        ImageButton searchButton = (ImageButton)findViewById(R.id.searchButton);
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
                 finish();
+            }
+        });
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                startActivity(intent);
             }
         });
 
