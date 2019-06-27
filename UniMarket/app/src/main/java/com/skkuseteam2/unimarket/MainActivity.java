@@ -3,6 +3,7 @@ package com.skkuseteam2.unimarket;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ImageButton searchButton;
+    static ArrayList<MarketItem> items = new ArrayList<MarketItem>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ImageButton menuButton=(ImageButton)findViewById(R.id.menuButton);
-        ImageButton searchButton = (ImageButton)findViewById(R.id.searchButton);
+        searchButton = (ImageButton)findViewById(R.id.searchButton);
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,19 +33,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        
+
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
                 startActivity(intent);
             }
         });
 
         class MarketAdapter extends BaseAdapter{
-
-            ArrayList<MarketItem> items = new ArrayList<MarketItem>();
-
             @Override
             public int getCount() {
                 return items.size();
@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     view = (MarketItemView) convertView;
                 }
-
                 MarketItem item = items.get(position);
                 view.setIcon(item.getIcon());
                 view.setIcon2(item.getIcon2());
@@ -86,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
         adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.pack,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.pack,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.etc,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         listView.setAdapter(adapter);
     }
 }
