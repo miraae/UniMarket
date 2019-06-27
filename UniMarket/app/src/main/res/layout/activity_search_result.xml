@@ -4,8 +4,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="28dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchResultActivity">
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +21,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/btn_back" />
         <ImageView
+            android:id="@+id/ganpan"
             android:layout_toRightOf="@+id/backButton"
             android:layout_toLeftOf="@id/guhaeText"
             android:scaleType="fitStart"
@@ -49,14 +49,10 @@
             android:scaleType="fitXY"
             android:src="@drawable/find" />
     </RelativeLayout>
-    <ScrollView
-        android:layout_marginTop="28dp"
-        android:fillViewport="true"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        android:focusableInTouchMode="false"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-        </ScrollView>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
 </LinearLayout>
