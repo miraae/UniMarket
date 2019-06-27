@@ -244,6 +244,7 @@
                     android:textSize="14sp"
                     android:text="대구광역시 달서구 대천동" />
             </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/mapLayout"
                 android:layout_marginTop="18dp"
@@ -260,7 +261,6 @@
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
                 android:src="@drawable/btn_chat" />
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

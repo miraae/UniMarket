@@ -1,5 +1,6 @@
 package com.skkuseteam2.unimarket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 return view;
             }
         }
-
+        Intent intent = new Intent(MainActivity.this,DetailFindActivity.class);
+        startActivity(intent);
         ListView listView = (ListView)findViewById(R.id.listView);
         MarketAdapter adapter = new MarketAdapter();
         adapter.addItem(new MarketItem(null,"구인",null,null,null,null,"10000원"));
