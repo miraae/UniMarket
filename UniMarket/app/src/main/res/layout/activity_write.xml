@@ -62,41 +62,54 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
+                    android:id="@+id/move"
                     android:layout_width="60dp"
                     android:layout_height="22dp"
                     android:layout_marginHorizontal="5dp"
                     android:background="@android:color/transparent"
+                    android:onClick="onClick"
                     android:scaleType="fitXY"
-                    android:src="@drawable/cat_move"
-                    />
+                    android:src="@drawable/cat_move" />
+
                 <ImageButton
-                    android:src="@drawable/cat_pack"
+                    android:id="@+id/pack"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
                     android:layout_marginHorizontal="5dp"
                     android:background="@android:color/transparent"
+                    android:onClick="onClick"
                     android:scaleType="fitXY"
-                    android:layout_width="60dp"
-                    android:layout_height="22dp" />
+                    android:src="@drawable/cat_pack" />
+
                 <ImageButton
-                    android:src="@drawable/cat_car"
+                    android:id="@+id/car"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
                     android:layout_marginHorizontal="5dp"
                     android:background="@android:color/transparent"
+                    android:onClick="onClick"
                     android:scaleType="fitXY"
-                    android:layout_width="60dp"
-                    android:layout_height="22dp" />
+                    android:src="@drawable/cat_car" />
+
                 <ImageButton
-                    android:src="@drawable/cat_pet"
+                    android:id="@+id/animal"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
                     android:layout_marginHorizontal="5dp"
                     android:background="@android:color/transparent"
+                    android:onClick="onClick"
                     android:scaleType="fitXY"
-                    android:layout_width="60dp"
-                    android:layout_height="22dp" />
+                    android:src="@drawable/cat_pet" />
+
                 <ImageButton
-                    android:src="@drawable/cat_etc"
+                    android:id="@+id/etc"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
                     android:layout_marginHorizontal="5dp"
                     android:background="@android:color/transparent"
+                    android:onClick="onClick"
                     android:scaleType="fitXY"
-                    android:layout_width="60dp"
-                    android:layout_height="22dp" />
+                    android:src="@drawable/cat_etc" />
             </LinearLayout>
 
             <TextView
