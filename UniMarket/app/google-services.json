@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "616398170546",
+    "firebase_url": "https://openhack2019unimarket.firebaseio.com",
+    "project_id": "openhack2019unimarket",
+    "storage_bucket": "openhack2019unimarket.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616398170546:android:ef6bf8fdc481bb77",
+        "android_client_info": {
+          "package_name": "com.skkuseteam2.unimarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616398170546-katbbd3mbts2n0blt0gik9a7t9lijm69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsW0GqVQ1rcyXT8QnYjLcKrXAdyGN7fhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616398170546-katbbd3mbts2n0blt0gik9a7t9lijm69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
