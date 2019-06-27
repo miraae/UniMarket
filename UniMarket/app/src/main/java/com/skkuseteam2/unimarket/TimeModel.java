@@ -13,9 +13,17 @@ public class TimeModel {
     public String type;
     public String hour;
     public String min;
-    public String daychecklist;
 
-    public void TimeModel(Date mydate,String _daychecklist){
+
+    public String MakeDateString(){
+        int hours = Integer.parseInt(hour);
+        if(type.equals("오후")==true)
+            hours += 12;
+        return day+" "+ hours +":"+min +":00";
+    }
+
+
+    public  TimeModel(Date mydate){
        int _hour = Integer.parseInt(GetDateTime(mydate,"HH"));
        //오후 오전 완성
        if(_hour > 12) {
@@ -27,10 +35,9 @@ public class TimeModel {
            hour = String.valueOf(_hour);
        }
 
-       if(daychecklist.equals("")== false)
-           daychecklist = _daychecklist;
 
-       day = GetDateTime(mydate,"yyyy-MM-dd");
+
+        day = GetDateTime(mydate,"yyyy-MM-dd");
        min = GetDateTime(mydate,"MM");
 
    }

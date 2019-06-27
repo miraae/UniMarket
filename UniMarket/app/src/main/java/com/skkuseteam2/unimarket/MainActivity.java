@@ -1,5 +1,7 @@
 package com.skkuseteam2.unimarket;
 
+import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,28 +15,52 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.net.ssl.HttpsURLConnection;
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
+    private ArrayList<BoardControll> boardlist = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //OpenHack_SelectAllBookMarket.php 호출해서 파싱.
+        //if(Data.otherid == myid || Data.userid == myid){
+        //
+        //
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("message");
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 //DB가 변경되면 계속해서 호출되는 부분.
+
+
+                ChatModel user = dataSnapshot.getValue(ChatModel.class);
+                // userlist.add(user);
+                // CustomAdapter adapter = (CustomAdapter) listView.getAdapter();
+                //adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -55,8 +81,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       Toast.makeText(getApplication(),MakeDateString("오후","2019-12-12","7","33") ,Toast.LENGTH_LONG).show();
+        Date date = MakeDate("2019-12-12 01:42:22");
+        TimeModel timeModel = new TimeModel(date);
+        BoardControll boardControll = new BoardControll(1,1,30000,4,2,
+                "이사","도와주세요","서구",timeModel ,timeModel,"월#목#금");
+
+        System.out.println(boardControll.getAddress());
+        String temp = boardControll.getAddress();
+
+        //========-
+       // Php_SendMessage("http://"+temp);
+        Php_SendMessage("http://10.10.4.186/Openhack_SelectAllData.php");
+       //==============
+
+
+
     }
+
+
 
     //채팅방 삭제(양방향 삭제) 보드 id값
     public void DeleteChatBoard(int boardid){
@@ -150,10 +192,9 @@ public class MainActivity extends AppCompatActivity {
 
     //메세지 샌딩 부분 ChatModel 생성자 부분 참고
     public void SendMessage(ChatModel packet){
-        ChatModel user = new ChatModel(1,"홍길동", "메세지 갔습당", 01, 1);
+        ChatModel user = new ChatModel(1,"김길동", "메세지 갔습당", 01, 1);
         mDatabase.push().setValue(user);
     }
-
 
 
     //받아온 날짜 문자 파싱
@@ -172,6 +213,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    
+
 
     //day_commend = "2019-04-05" 를 주면 그것에 맞는 요일을 반환
     public  String getDateDay(String day_commend) {
@@ -230,7 +274,6 @@ public class MainActivity extends AppCompatActivity {
         return _year+" "+ hour +":"+_min +":00";
     }
 
-
     public Date MakeDate(String time){
 
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -247,4 +290,123 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private void  Php_SendMessage(String str){
+        PhpTest task = new PhpTest();
+        //task.execute("http://" + address + "/" + _filename);
+
+        task.execute(str);
+        //task.execute("http://10.10.2.147:80/InsertBoard.php/?boardid=1&userid=1&boardsort=1&price=1000&icon=애완&maintext=제발도와주세요&location=동구&member=3/ ");
+        //task.execute("http://서버 url/test.php?id=테스트 ㅇㅋ? / ");
+    }
+
+
+
+    private class PhpTest extends AsyncTask<String,String,String> {
+
+
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String output = "";
+            try {
+                //연결 url 설정
+                System.out.println(params[0]);
+                URL url = new URL(params[0]);
+
+                //커넥션 객체 생성
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                conn.setDefaultUseCaches(false);
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+               // conn.setConnectTimeout(100000);
+              //  InputStreamReader in = new InputStreamReader((InputStream)conn.getContent(), "utf-8");
+
+                //연결되었으면
+                if(conn != null){
+                    conn.setConnectTimeout(100000);
+                    conn.setUseCaches(false);
+
+                    //연결된 코드가 리턴되면
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        int i = 0 ;
+                        for(;;){
+                            //웹상에 보이는 텍스트를 라인단위로 읽어 저장
+                            String line = br.readLine();
+                            if(line == null) { //라인이 없을 때
+                                break;
+                            }
+                            i++;
+                            output += line;
+                        }
+                        br.close();
+
+                    }
+                    conn.disconnect();
+                    return output;
+                }else{
+                    System.out.println("실패");
+                    return "여기";
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+                return "하..";
+            }
+
+        }
+
+        //반환 값은 여기로
+        protected void onPostExecute(String str){
+            String OutputData = "";
+            JSONObject jsonResponse;
+            Toast.makeText(getApplication(),str,Toast.LENGTH_LONG).show();
+
+            try {
+
+                /****** Creates a new JSONObject with name/value mappings from the JSON string. ********/
+                jsonResponse = new JSONObject(str);
+
+                /***** Returns the value mapped by name if it exists and is a JSONArray. ***/
+                /*******  Returns null otherwise.  *******/
+                JSONArray jsonMainNode = jsonResponse.optJSONArray("SelectAll");
+
+                /*********** Process each JSON Node ************/
+
+                int lengthJsonArr = jsonMainNode.length();
+
+                for(int i=0; i < lengthJsonArr; i++)
+                {
+                    /****** Get Object for each JSON node.***********/
+                    JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
+
+                    Date StartTime = MakeDate(jsonChildNode.getString("starttime"));
+                    Date EndTime = MakeDate(jsonChildNode.getString("endtime"));
+
+
+                    TimeModel St = new TimeModel(StartTime);
+                    TimeModel Et = new TimeModel(EndTime);
+
+
+                    BoardControll boardControll = new BoardControll((jsonChildNode.getInt("userid")), (jsonChildNode.getInt("boardid")), (jsonChildNode.getInt("price")),
+                            (jsonChildNode.getInt("member")), (jsonChildNode.getInt("noardsort")), (jsonChildNode.getString("icon")), (jsonChildNode.getString("maintext")),
+                            (jsonChildNode.getString("location")), St, Et, (jsonChildNode.getString("daystring")));
+
+                    boardlist.add(boardControll);
+                }
+
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+
+        }
+
+       }
+
 }
+
+
+
+

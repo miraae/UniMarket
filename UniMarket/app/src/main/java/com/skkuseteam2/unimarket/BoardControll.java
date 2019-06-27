@@ -9,13 +9,15 @@ public class BoardControll {
 
         public int userid;  //유저 아이디
         public int boardid; //게시판 번호
-        public int price;   //금액
-        public int member;  //맴버 수
-        public int boardsort; //구인 구직
 
-        public String icon;  //카테고리
+        public int price;   //금액---------
+        public int member;  //맴버 수------
+        public int boardsort; //구인 구직-----
+        public String icon;  //카테고리 ------
+
         public String maintext; //메인택스트
-        public String location; //지역
+
+        public String location; //지역  -------
 
         public TimeModel starttime;
         public TimeModel endtime;
@@ -35,7 +37,6 @@ public class BoardControll {
                 starttime = _starttime;
                 endtime  =  _endtime;
         }
-
 
         public String getAddress() {
                 StringBuilder str = new StringBuilder("10.10.4.186/OpenHack_InsertEmployBoard.php/?boardid=");
