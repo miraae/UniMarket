@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent =  new Intent(MainActivity.this,MyPageActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
-                finish();
             }
         });
         
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 return view;
             }
         }
-
         ListView listView = (ListView)findViewById(R.id.listView);
         listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
@@ -91,5 +90,14 @@ public class MainActivity extends AppCompatActivity {
         adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
+            }
+        });
     }
 }
