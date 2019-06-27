@@ -1,7 +1,6 @@
 package com.skkuseteam2.unimarket;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // 삭제할 코드 (Detail Activity 먼저 실행)
-        Intent intent = new Intent(getApplicationContext(), ChattingRoomActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(getApplicationContext(), ChattingRoomActivity.class);
+        startActivity(intent);*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -50,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 MarketItemView view = new MarketItemView(getApplicationContext());
                 MarketItem item = items.get(position);
-                view.setIcon(R.drawable.test);
-                view.setTextView1(item.getStr());
-                view.setImg(R.drawable.test,R.drawable.test,R.drawable.test,R.drawable.test);
+                view.setIcon(item.getIcon());
+                view.setIcon2(item.getIcon2());
+                view.setAddress(item.getAddress());
+                view.setImg(item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4());
                 view.setMoney(item.getMoney());
                 return view;
             }
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView)findViewById(R.id.listView);
         MarketAdapter adapter = new MarketAdapter();
-        adapter.addItem(new MarketItem(null,"구인",null,null,null,null,"10000원"));
+        adapter.addItem(new MarketItem(R.drawable.detail_move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
         listView.setAdapter(adapter);
     }
 }

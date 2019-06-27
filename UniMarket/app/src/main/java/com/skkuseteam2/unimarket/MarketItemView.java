@@ -49,7 +49,7 @@ public class MarketItemView extends LinearLayout {
     {
         icon2.setImageResource(name);
     }
-    public void setAdress(String name){
+    public void setAddress(String name){
         address.setText(name);
     }
 
