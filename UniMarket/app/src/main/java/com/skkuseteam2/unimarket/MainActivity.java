@@ -29,6 +29,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean logined = false;
+
     ImageButton searchButton;
     static ArrayList<MarketItem> items = new ArrayList<MarketItem>();
     private ArrayList<BoardControll> boardlist = new ArrayList<>();
@@ -38,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
+        if (!logined) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            logined = true;
+        }
 
         ImageButton menuButton=(ImageButton)findViewById(R.id.menuButton);
         searchButton = (ImageButton)findViewById(R.id.searchButton);
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(MainActivity.this,MyPageActivity.class);
+                Intent intent =  new Intent(getApplicationContext(),MyPageActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
             }
@@ -103,16 +108,22 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.listView);
         listView.setBackgroundColor(Color.WHITE);
         MarketAdapter adapter = new MarketAdapter();
-        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.pack_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.car,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.car_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.pack,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.etc,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.move_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
-        adapter.addItem(new MarketItem(R.drawable.etc_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"4000"));
+        adapter.addItem(new MarketItem(R.drawable.move,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"8350"));
+        adapter.addItem(new MarketItem(R.drawable.pack_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"9000"));
+        adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
+        adapter.addItem(new MarketItem(R.drawable.car,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"8500"));
+        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"10000"));
+        adapter.addItem(new MarketItem(R.drawable.car_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"8350"));
+        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
+        adapter.addItem(new MarketItem(R.drawable.pack,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"8700"));
+        adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
+        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
+        adapter.addItem(new MarketItem(R.drawable.etc,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"8350"));
+        adapter.addItem(new MarketItem(R.drawable.move_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"8350"));
+        adapter.addItem(new MarketItem(R.drawable.etc_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,R.drawable.hum_icon,0,"8800"));
+        adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
+        adapter.addItem(new MarketItem(R.drawable.pet_y,R.drawable.find,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
+        adapter.addItem(new MarketItem(R.drawable.pet,R.drawable.guhae,"대구광역시 달서구 진천동",R.drawable.hum_icon,R.drawable.hum_icon,0,0,"9500"));
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

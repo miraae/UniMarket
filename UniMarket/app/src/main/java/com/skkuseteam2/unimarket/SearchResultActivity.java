@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -18,11 +19,15 @@ public class SearchResultActivity extends AppCompatActivity {
     ImageView ganpan;
     ImageView backButton;
     int size = MainActivity.items.size();
+    ImageButton guhaeBtn;
+    ImageButton findBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
+
 
         backButton = (ImageView)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +41,9 @@ public class SearchResultActivity extends AppCompatActivity {
         ganpan = (ImageView)findViewById(R.id.ganpan);
         Intent intent = getIntent();
         data = intent.getStringExtra("id");
+
+
+
 
         class MarketAdapter extends BaseAdapter {
             ArrayList<MarketItem> lists = new ArrayList<MarketItem>();
@@ -138,6 +146,25 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         }
         listView.setAdapter(adapter);
+
+        guhaeBtn = (ImageButton)findViewById(R.id.guhaeButton);
+        findBtn = (ImageButton)findViewById(R.id.findButton);
+
+        guhaeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                guhaeBtn.setImageResource(R.drawable.guhae_on);
+                findBtn.setImageResource(R.drawable.find);
+            }
+        });
+
+        findBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                guhaeBtn.setImageResource(R.drawable.guhae);
+                findBtn.setImageResource(R.drawable.find_on);
+            }
+        });
     }
 
 }

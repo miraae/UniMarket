@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -45,10 +47,18 @@ public class ChattingRoomActivity extends AppCompatActivity {
 
         loadChatting();
 
-        ChattingAdapter adapter=new ChattingAdapter(chatModels);
+        CustomAdapter adapter=new CustomAdapter (chatModels, LayoutInflater.from(getBaseContext()));
         //adapter.addItem(new ChattingItem("홍길동","안녕하세요"));
         listView.setAdapter(adapter);
         //listView.setBackgroundColor("#ffe262");
+
+        ImageButton backBtn = (ImageButton)findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public void SendTextMessage(View view) {
@@ -91,8 +101,8 @@ public class ChattingRoomActivity extends AppCompatActivity {
             view.setName(item.getName());
             view.setContent(item.getText());
 
-            if (item.getOtherid() == uid)
-                changeTheme(view);
+/*            if (item.getOtherid() == uid)
+                changeTheme(view);*/
 
             return view;
         }
@@ -106,8 +116,7 @@ public class ChattingRoomActivity extends AppCompatActivity {
             LinearLayout linearLayout = findViewById(R.id.layoutForAlign);
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            );
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
             linearLayout.setLayoutParams(params);
             params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
             params.addRule(RelativeLayout.ALIGN_PARENT_START, 0);
@@ -154,7 +163,7 @@ public class ChattingRoomActivity extends AppCompatActivity {
 
                 if (user.getBoardid() == bid) {
                     chatModels.add(user);
-                    ChattingAdapter adapter = (ChattingAdapter)listView.getAdapter();
+                    CustomAdapter adapter = (CustomAdapter)listView.getAdapter();
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -180,7 +189,6 @@ public class ChattingRoomActivity extends AppCompatActivity {
 
     //채팅방 삭제(양방향 삭제) 보드 id값
     public void DeleteChatBoard(int boardid){
-
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("message");
         db.orderByChild("boardid").equalTo(boardid).addChildEventListener(new ChildEventListener() {
