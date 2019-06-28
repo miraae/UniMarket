@@ -42,9 +42,6 @@ public class SearchResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringExtra("id");
 
-
-
-
         class MarketAdapter extends BaseAdapter {
             ArrayList<MarketItem> lists = new ArrayList<MarketItem>();
 
@@ -67,6 +64,10 @@ public class SearchResultActivity extends AppCompatActivity {
                 lists.add(item);
             }
 
+            private void clear() {
+                lists.clear();
+            }
+
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 MarketItemView view = null;
@@ -87,14 +88,14 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         }
 
-        ListView listView = (ListView)findViewById(R.id.listView);
+        final ListView listView = (ListView)findViewById(R.id.listView);
         listView.setBackgroundColor(Color.WHITE);
-        MarketAdapter adapter = new MarketAdapter();
+        final MarketAdapter adapter = new MarketAdapter();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailFindActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
             }
@@ -155,6 +156,18 @@ public class SearchResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 guhaeBtn.setImageResource(R.drawable.guhae_on);
                 findBtn.setImageResource(R.drawable.find);
+                adapter.clear();
+
+                MarketItem item = MainActivity.items.get(2);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+                item = MainActivity.items.get(8);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+                item = MainActivity.items.get(13);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+                item = MainActivity.items.get(15);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+
+                listView.setAdapter(adapter);
             }
         });
 
@@ -163,7 +176,18 @@ public class SearchResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 guhaeBtn.setImageResource(R.drawable.guhae);
                 findBtn.setImageResource(R.drawable.find_on);
-            }
+                adapter.clear();
+
+                MarketItem item = MainActivity.items.get(4);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+                item = MainActivity.items.get(6);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+                item = MainActivity.items.get(9);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+                item = MainActivity.items.get(14);
+                adapter.addItem(new MarketItem(item.getIcon(),item.getIcon2(),item.getAddress(),item.getImg1(),item.getImg2(),item.getImg3(),item.getImg4(),item.getMoney()));
+
+                listView.setAdapter(adapter);            }
         });
     }
 

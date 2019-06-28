@@ -24,10 +24,11 @@
             android:src="@drawable/btn_my" />
 
         <ImageView
+            android:src="@drawable/main_logo"
             android:layout_centerInParent="true"
             android:id="@+id/logoimage"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="47dp"
+            android:layout_height="30dp" />
 
         <ImageButton
             android:id="@+id/searchButton"

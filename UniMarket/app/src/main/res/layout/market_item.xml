@@ -16,6 +16,7 @@
 
         <ImageView
             android:id="@+id/icon"
+            android:layout_gravity="center_vertical"
             android:layout_width="122.6dp"
             android:layout_height="163dp"
             android:src="@drawable/move" />

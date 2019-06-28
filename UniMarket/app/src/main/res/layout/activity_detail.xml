@@ -110,7 +110,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nanumsquareroundb"
                             android:paddingHorizontal="13dp"
-                            android:text="4000"
+                            android:text="8500"
                             android:textColor="#707070"
                             android:textSize="35sp" />
 
@@ -159,7 +159,7 @@
                     android:layout_width="33dp"
                     android:layout_height="51dp" />
                 <ImageView
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:src="@drawable/hum_icon"
                     android:layout_marginHorizontal="10dp"
                     android:background="@android:color/transparent"
@@ -206,7 +206,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:text="상세설명"
+                    android:text="#이사#이삿짐옮기기#점심제공
+자취방 이사해요! 짐 옮겨주실 세 분 모십니다!
+
+점심제공 해드려요! 시급은 협의 조정 가능합니다!"
+                    android:fontFamily="@font/nanumsquareroundeb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -229,7 +233,7 @@
                     android:layout_width="32dp"
                     android:layout_height="33dp" />
                 <TextView
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/check"
                     android:text="M"
                     android:fontFamily="@font/nanumsquareroundeb"
                     android:textColor="#575757"

@@ -1,5 +1,6 @@
 package com.skkuseteam2.unimarket;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 
 public class ChattingRoomActivity extends AppCompatActivity {
 
-    private int uid = 1;
+    private int uid = 2;
     private int bid = 1;
 
     ListView listView;
@@ -56,6 +57,18 @@ public class ChattingRoomActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
+            }
+        });
+
+        ImageButton homeBtn = (ImageButton)findViewById(R.id.homeButton);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
                 finish();
             }
         });
