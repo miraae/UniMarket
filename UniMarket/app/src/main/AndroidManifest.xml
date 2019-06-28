@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.skkuseteam2.unimarket">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".MyListActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ScrapListActivity" />
+        <activity android:name=".SearchActivity" />
         <activity android:name=".SearchResultActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".ChattingRoomActivity" />

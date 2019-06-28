@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/go_pro"
+            android:src="@drawable/peo5"
             android:layout_width="126dp"
             android:layout_height="140dp" />
         <TextView
@@ -39,7 +39,7 @@
             android:fontFamily="@font/nanumsquareroundb"
             android:textColor="#ffffff"
             android:textSize="24.7sp"
-            tools:text="닉네임" />
+            android:text="쿠크다스" />
     </LinearLayout>
     <RelativeLayout
         android:paddingHorizontal="55dp"
@@ -111,6 +111,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp" />
         <Button
+            android:id="@+id/scrapListButton"
             android:background="@android:color/transparent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="11dp"
@@ -142,6 +143,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp" />
         <Button
+            android:id="@+id/myListButton"
             android:background="@android:color/transparent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="11dp"

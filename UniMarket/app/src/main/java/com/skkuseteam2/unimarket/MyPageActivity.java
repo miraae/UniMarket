@@ -11,7 +11,10 @@ public class MyPageActivity extends AppCompatActivity {
     ImageButton cancel;
     Button people;
     Button find;
+
     Button findButton;
+
+    Button scrapList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,8 @@ public class MyPageActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyPageActivity.this,MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
                 finish();
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
             }
         });
         people = (Button)findViewById(R.id.people);
@@ -50,7 +51,22 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),WriteFindActivity.class);
                 startActivity(intent);
-
+            }
+        });
+        scrapList = (Button)findViewById(R.id.scrapListButton);
+        scrapList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ScrapListActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button myList = (Button)findViewById(R.id.myListButton);
+        myList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MyListActivity.class);
+                startActivity(intent);
             }
         });
     }

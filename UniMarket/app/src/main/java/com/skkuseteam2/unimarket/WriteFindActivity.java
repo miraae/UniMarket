@@ -4,10 +4,13 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
+
+import android.widget.ImageButton;
 
 public class WriteFindActivity extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class WriteFindActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_find);
+
         list = new ArrayList<Integer>();
         for(int i=0;i<7;i++)
             list.add(0);
@@ -155,5 +159,14 @@ public class WriteFindActivity extends AppCompatActivity {
                     sat.setBackgroundColor(Color.WHITE);
                 }
         }
+
+        ImageButton backBtn = (ImageButton)findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 }

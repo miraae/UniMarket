@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingHorizontal="28dp"
+    tools:context=".MyListActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
@@ -20,28 +21,26 @@
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@drawable/btn_back" />
-        <ImageView
-            android:id="@+id/ganpan"
+        <TextView
+            android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/backButton"
-            android:layout_toLeftOf="@id/guhaeButton"
-            android:scaleType="fitStart"
-            android:src="@drawable/tagbutton_pet"
-            android:layout_marginLeft="30dp"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
-            android:layout_height="21dp" />
-        <ImageButton
-            android:id="@+id/guhaeButton"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
+            android:layout_height="wrap_content"
+            android:textSize="19.3sp"
+            android:textColor="#707070"
+            android:gravity="center_horizontal"
+            android:text="내가 쓴 글"
+            />
+        <ImageView
+            android:id="@+id/guhaeText"
             android:layout_width="66dp"
             android:layout_height="25dp"
-            android:layout_toLeftOf="@id/findButton"
+            android:layout_toLeftOf="@id/findText"
             android:layout_centerVertical="true"
+            android:scaleType="fitXY"
             android:src="@drawable/guhae" />
-        <ImageButton
-            android:id="@+id/findButton"
-            android:background="@android:color/transparent"
+        <ImageView
+            android:id="@+id/findText"
             android:layout_width="66dp"
             android:layout_height="25dp"
             android:layout_marginLeft="7dp"
