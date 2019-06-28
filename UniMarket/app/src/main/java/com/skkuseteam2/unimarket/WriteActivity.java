@@ -101,17 +101,18 @@ public class WriteActivity extends AppCompatActivity {
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WriteActivity.this,MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("locating","대구 수성구");
                 intent.putExtra("member",size);
                 intent.putExtra("price",price.getText().toString());
                 intent.putExtra("icon",icon);
                 intent.putExtra("maintext",content.getText().toString());
-                String start =t1.getText().toString()+"@"+startyear+"-"+startmonth+"-"+startday+"@"+starthour.getText().toString()+"@"+startminute.getText().toString();
-                String end = t2.getText().toString()+"@"+endyear+"-"+endmonth+"-"+endday+"@"+endhour.getText().toString()+"@"+endminute.getText().toString();
+                String start =t1.getText().toString()+" "+startyear+"-"+startmonth+"-"+startday+" "+starthour.getText().toString()+" "+startminute.getText().toString();
+                String end = t2.getText().toString()+" "+endyear+"-"+endmonth+"-"+endday+" "+endhour.getText().toString()+" "+endminute.getText().toString();
                 intent.putExtra("start",start);
                 intent.putExtra("end",end);
                 startActivity(intent);
+
             }
         });
 

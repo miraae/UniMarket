@@ -19,15 +19,15 @@ public class BoardControll {
 
         public String location; //지역  -------
 
-        public TimeModel starttime;
-        public TimeModel endtime;
+        public String starttime;
+        public String endtime;
 
         public String daystring; // 데이 스트링
 
         public BoardControll(){
 
         }
-        public BoardControll(int _userid, int _boardid,int _price,int _member,int _boardsort,int _icon,String _maintext,String _location,TimeModel _endtime,TimeModel _starttime,String _daystring){
+        public BoardControll(int _userid, int _boardid,int _price,int _member,int _boardsort,int _icon,String _maintext,String _location,String _endtime,String _starttime,String _daystring){
                 userid =_userid;
                 boardid = _boardid;
                 price = _price;
@@ -39,34 +39,6 @@ public class BoardControll {
                 daystring= _daystring;
                 starttime = _starttime;
                 endtime  =  _endtime;
-        }
-
-        public String getAddress() {
-                StringBuilder str = new StringBuilder("10.10.4.186/OpenHack_InsertEmployBoard.php/?boardid=");
-                str.append(boardid);
-                str.append("&userid=");
-                str.append(userid);
-                str.append("&boardsort=");
-                str.append(boardsort);
-                str.append("&price=");
-                str.append(price);
-                str.append("&icon=");
-                str.append(icon);
-                str.append("&maintext=");
-                str.append(maintext);
-                str.append("&location=");
-                str.append(location);
-                str.append("&endtime=");
-                str.append(endtime.MakeDateString());
-                str.append("&member=");
-                str.append(member);
-                str.append("&starttime=");
-                str.append(starttime.MakeDateString());
-                str.append("&daystring=");
-                str.append(daystring);
-
-            return  str.toString();
-
         }
 
 
