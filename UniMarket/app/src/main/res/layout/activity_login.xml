@@ -29,7 +29,8 @@
             android:textColor="#ffffff"
             android:textColorHint="#95ffffff"
             android:textSize="20sp"
-            android:imeOptions="actionSend"
+            android:inputType="textShortMessage"
+            android:imeOptions="actionNext"
             android:hint="아이디"/>
         <View
             android:background="#95ffffff"
@@ -45,7 +46,7 @@
             android:fontFamily="@font/nanumsquareroundb"
             android:textColor="#ffffff"
             android:textColorHint="#95ffffff"
-            android:imeOptions="actionSend"
+            android:imeOptions="actionDone"
             android:textSize="20sp"
             android:hint="비밀번호 (6-12자)"/>
         <View

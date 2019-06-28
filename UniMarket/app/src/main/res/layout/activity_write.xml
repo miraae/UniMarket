@@ -216,6 +216,7 @@
                     android:textColor="#414141" />
                 <EditText
                     android:id="@+id/price"
+                    android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -224,6 +225,7 @@
                     android:layout_toLeftOf="@+id/wonText"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/nanumsquareroundb"
+                    android:imeOptions="actionGo"
                     android:hint="8350"
                     android:textColor="#707070"
                     android:textSize="33sp" />
@@ -256,6 +258,7 @@
 
                 <EditText
                     android:id="@+id/content"
+                    android:imeOptions="actionGo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"

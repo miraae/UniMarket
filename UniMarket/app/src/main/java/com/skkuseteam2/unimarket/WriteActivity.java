@@ -2,8 +2,8 @@ package com.skkuseteam2.unimarket;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -11,8 +11,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class WriteActivity extends AppCompatActivity {
     ImageButton backButton;
@@ -95,9 +93,6 @@ public class WriteActivity extends AppCompatActivity {
         publishButton = (ImageButton)findViewById(R.id.publishButton);
 
 
-
-
-
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +106,11 @@ public class WriteActivity extends AppCompatActivity {
                 String end = t2.getText().toString()+"@"+endyear+"-"+endmonth+"-"+endday+"@"+endhour.getText().toString()+"@"+endminute.getText().toString();
                 intent.putExtra("start",start);
                 intent.putExtra("end",end);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+                Toast.makeText(getApplicationContext(), "등록되었습니다", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
